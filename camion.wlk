@@ -30,5 +30,8 @@ object camion {
         return not(self.estaExcedido()) && self.ningunObjetoEsMasPeligrosoDe(nivelPeligrosidad)
     }
 
+    method cosaMasPesada() = cosasCargadas.max({cosa => cosa.peso()}) 
+    method algunaCosaPesaEntre(minimo, maximo) = cosasCargadas.any({cosa => cosa.peso().between(minimo, maximo)})
+
     method peso() = self.tara() + self.pesoDeLaCarga()
 }
