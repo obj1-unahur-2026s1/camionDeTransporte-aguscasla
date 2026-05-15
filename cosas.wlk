@@ -3,25 +3,21 @@ object knightRider {
     method nivelPeligrosidad() = 10  
 }
 
+object auto {
+    method nivelPeligrosidad() = 15
+}
+object robot {
+    method nivelPeligrosidad() = 30
+}
+
 object bumblebee {
-    var transformadoEn = "auto"
+    var transformadoEn = robot
 
     method transformarseEn(transformacion) {
-        if (transformacion == "auto" or transformacion == "robot"){
-            transformadoEn = transformacion
-        }
+        transformadoEn = transformacion
     }
 
-    method nivelPeligrosidad() {
-        if (self.transformadoEn() == "robot") {
-            return 15
-        }
-        else{
-            return 30
-        }
-    }
-
-    method transformadoEn() = transformadoEn 
+    method nivelPeligrosidad() = transformadoEn.nivelPeligrosidad()
     method peso() = 800
      
 }
@@ -30,7 +26,7 @@ object ladrillo {
     method peso() = 2 
 }
 object paqueteLadrillos {
-    var cantidadLadrillos = 4
+    var cantidadLadrillos = 0
 
     method agregarLadrillos(unaCantidadLadrillos) {
         cantidadLadrillos += unaCantidadLadrillos
@@ -45,7 +41,7 @@ object paqueteLadrillos {
 }
 
 object arenaGranel {
-    var peso = 12
+    var peso = 0
 
     method agregarPeso(unPeso) {
         peso += unPeso
@@ -104,14 +100,14 @@ object contenedorPortuario {
         if (cosasCargadas.isEmpty()){
             return 0
         }
-        return cosasCargadas.max({cosa => cosa.nivelPeligrosidad()})
+        return cosasCargadas.max({cosa => cosa.nivelPeligrosidad()}).nivelPeligrosidad()
     }
 
     method peso() = 100 + cosasCargadas.sum({cosa => cosa.peso()}) 
 }
 
 object residuosRadioctivos {
-    var peso = 850
+    var peso = 0
 
     method agregarPeso(unPeso) {
         peso += unPeso
