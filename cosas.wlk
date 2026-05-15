@@ -18,7 +18,7 @@ object bumblebee {
     }
 
     method nivelPeligrosidad() = transformadoEn.nivelPeligrosidad()
-    method peso() = 800
+    method peso() = 800 // PESOOOOOOOOO
      
 }
 

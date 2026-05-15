@@ -10,11 +10,11 @@ object camion {
         cosasCargadas.remove(unaCosa)
     }
 
-    method pesoDeLaCarga() = cosasCargadas.sum({cosa => cosa.peso()})
+    method pesoDeLaCarga() = cosasCargadas.sum({cosa => cosa.peso()}) //
 
-    method elPesoDeLasCosasSonPares() = cosasCargadas.all({cosa => cosa.peso().even()})
+    method elPesoDeLasCosasSonPares() = cosasCargadas.all({cosa => cosa.peso().even()}) //
 
-    method algunaCosaPesa(unPeso) = cosasCargadas.any({cosa => cosa.peso() == unPeso})
+    method algunaCosaPesa(unPeso) = cosasCargadas.any({cosa => cosa.peso() == unPeso}) //
 
     method primerCosaPeligrosa(nivelPeligrosidad) = cosasCargadas.find({cosa => cosa.nivelPeligrosidad() == nivelPeligrosidad})
 
