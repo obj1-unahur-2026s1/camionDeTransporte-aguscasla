@@ -12,13 +12,23 @@ object camion {
 
     method pesoDeLaCarga() = cosasCargadas.sum({cosa => cosa.peso()})
 
-    method elPesoDeLasCosasSonPares() = true
+    method elPesoDeLasCosasSonPares() = cosasCargadas.all({cosa => cosa.peso().even()})
 
-    method algunaCosaPesa(unPeso) = null
+    method algunaCosaPesa(unPeso) = cosasCargadas.any({cosa => cosa.peso() == unPeso})
 
-    method primerCosaPeligrosa() = null
+    method primerCosaPeligrosa(nivelPeligrosidad) = cosasCargadas.find({cosa => cosa.nivelPeligrosidad() == nivelPeligrosidad})
 
-    method tienenPeligrosidadMasAltaDe(nivelPeligrosidad) = null
+    method tienenPeligrosidadMasAltaDe(nivelPeligrosidad) = cosasCargadas.filter({cosa => cosa.nivelPeligrosidad() > nivelPeligrosidad})
+
+    method esMasPeligrosoQueUnaCosa(unaCosa) = cosasCargadas.filter({cosa => cosa.nivelPeligrosidad() > unaCosa.nivelPeligrosidad()})
+
+    method estaExcedido() = self.peso() > 2500
+
+    method ningunObjetoEsMasPeligrosoDe(nivelPeligrosidad) = cosasCargadas.all({cosa => cosa.nivelPeligrosidad() < nivelPeligrosidad})
+
+    method puedeCircularEnRuta(nivelPeligrosidad) {
+        return not(self.estaExcedido()) && self.ningunObjetoEsMasPeligrosoDe(nivelPeligrosidad)
+    }
 
     method peso() = self.tara() + self.pesoDeLaCarga()
 }
