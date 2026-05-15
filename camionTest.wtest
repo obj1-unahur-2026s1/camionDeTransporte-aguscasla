@@ -1,9 +1,24 @@
+import cosas.*
 import camion.*
 
 describe "group of test for camion" {
-
+  method initialize() {
+    bumblebee.transformarseEn(robot)
+    arenaGranel.agregarPeso(150)
+    bateriaAntiaerea.cargarMisiles()
+    paqueteLadrillos.agregarLadrillos(80)
+    embalajeDeSeguridad.embalarUnaCosa(paqueteLadrillos)
+  }
+  method camionCargado(){
+    camion.cargar(bumblebee)
+    camion.cargar(arenaGranel)
+    camion.cargar(bateriaAntiaerea)
+    camion.cargar(paqueteLadrillos)
+    camion.cargar(embalajeDeSeguridad)
+  }
   test "first test" {
-    
+    self.camionCargado()
+    assert.equals(value, expression)
   }
 
 }

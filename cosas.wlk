@@ -59,11 +59,11 @@ object bateriaAntiaerea {
     var estaCargado = false
 
     method cargarMisiles() {
-        estaCargado = not(estaCargado)
+        estaCargado = true
     }
 
     method descargarMisiles() {
-        estaCargado = not(estaCargado)
+        estaCargado = false
     }
 
     method peso() {
