@@ -1,3 +1,5 @@
+// push, test
+
 object camion {
     const cosasCargadas = []
     method tara() = 1000
